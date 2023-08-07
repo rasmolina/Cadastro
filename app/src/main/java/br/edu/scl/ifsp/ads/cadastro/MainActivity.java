@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -19,6 +20,14 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup radioGroupSexo;
     private Spinner spinnerEstado;
 
+    private String[] estadosBrasileiros = {
+            "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal",
+            "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul",
+            "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
+            "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina",
+            "São Paulo", "Sergipe", "Tocantins"
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnLimpar = findViewById(R.id.btnLimpar);
         Button btnSalvar = findViewById(R.id.btnSalvar);
+
+        Spinner spinnerEstado = findViewById(R.id.spinnerEstado);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, estadosBrasileiros);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEstado.setAdapter(adapter);
+
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
